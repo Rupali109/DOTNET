@@ -1,0 +1,96 @@
+---select---
+
+
+-- =============================================
+-- Author:		Rupali
+-- Create date: 21/4/21
+-- Description:	Get_all_vehicle
+-- =============================================
+ALTER PROCEDURE [dbo].[Sproc_Get_all_vehicle]
+
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+	
+
+    -- Insert statements for procedure here
+	select * from Vehicle;
+	END
+
+
+------insert----
+
+
+-- =============================================
+-- Author:		Rupali
+-- Create date: 21/4/21
+-- Description:	Get_all_vehicle
+-- =============================================
+ALTER PROCEDURE [dbo].[Sproc_InsertVehicle]
+(
+	@ChassisNumber VARCHAR(100),
+	@EngineNumber VARCHAR(100),
+	@Make VARCHAR(100),
+	@Model VARCHAR(100),
+	@YearofManufacture INT
+)
+AS
+BEGIN
+	DECLARE @ScopeID INT
+	
+
+	INSERT INTO Vehicle(ChassisNumber,EngineNumber,Make,Model,YearofManufacture)
+	VALUES(@ChassisNumber, @EngineNumber ,@Make , @Model ,@YearofManufacture )
+
+    SET @ScopeID = SCOPE_IDENTITY()
+	 RETURN @ScopeID
+    -- Insert statements for procedure here
+	
+	END
+
+----update----
+
+CREATE PROCEDURE [dbo].[Sproc_Get_all_vehicle]
+(   
+    @id INT,
+	@ChassisNumber VARCHAR(100),
+	@EngineNumber VARCHAR(100),
+	@Make VARCHAR(100),
+	@Model VARCHAR(100),
+	@YearofManufacture INT
+)
+AS
+BEGIN
+	 UPDATE Vehicle  
+            SET    ChassisNumber = @ChassisNumber,  
+                   EngineNumber = @EngineNumber,  
+                   Make = @Make,  
+                   Model = @Model  
+            WHERE  id = @id  
+        END  
+GO
+
+
+-------
+
+CREATE PROCEDURE [dbo].[Sproc_Get_all_vehicle]
+(   
+    @id INT,
+	@ChassisNumber VARCHAR(100),
+	@EngineNumber VARCHAR(100),
+	@Make VARCHAR(100),
+	@Model VARCHAR(100),
+	@YearofManufacture INT
+)
+AS
+BEGIN
+	 UPDATE [Vehicle] SET [ChassisNumber] = '19',
+	                         [model] = 'polo'
+	 
+        END  
+GO
+
+	 
+
