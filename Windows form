@@ -1,0 +1,154 @@
+----form1.cs----
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WinFormsApp2
+{
+    public partial class Form1 : Form
+    {
+        private List<Vehicle> lstVehicle = new List<Vehicle>();
+        private int year = 2020;
+        Vehicle objVehicle = new Vehicle();
+        DataTable dt = new DataTable();
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        private void Form1_load(object sender, EventArgs e)
+        {
+           /* DataColumn colEngineNumber = new DataColumn("EngineNumber", typeof(string));
+            dt.Columns.Add(colEngineNumber);
+
+            DataColumn colChassisNumber = new DataColumn("ChassisNumber", typeof(string));
+            dt.Columns.Add(colChassisNumber);*/
+        }
+        /*private void button1_click(object sender, EventArgs e)
+        {
+            grdVehicle.DataSource = null;
+            // lstVehicle.Add(objVehicle);
+            grdVehicle.Refresh();
+            grdVehicle.DataSource = dt;
+         }
+        private void add_click(object sender, EventArgs e)
+        {
+            try
+            {
+            /*    if (string.IsNullOrWhiteSpace(txtEngine.Text))
+                {
+
+                    errorProvider1.SetError(this.txtEngine, "please Enter Engine Number");
+                    return;
+
+                }
+                // Vehicle objVehicle = new Vehicle();          
+
+
+                objVehicle.ChassisNumber = txtChassis.Text;
+                objVehicle.EngineNumber = txtEngine.Text;
+                objVehicle.Make = txtMake.Text;
+                objVehicle.Model = txtModel.Text;
+                int.TryParse(txtmanufacture.Text, out year);
+                txtmanufacture.Text = year.ToString();
+
+                DataRow row = dt.NewRow();
+                row["ChassisNumber"] = txtChassis.Text;
+                row["EngineNumber"] = txtEngine.Text;
+                dt.Rows.Add(row);
+
+
+                MessageBox.Show("data add in table");
+                txtChassis.Text = string.Empty;
+                txtEngine.Text = string.Empty;
+
+
+            }
+
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
+        }*/
+
+        private void txtEngine_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+            DataColumn colEngineNumber = new DataColumn("EngineNumber", typeof(string));
+            dt.Columns.Add(colEngineNumber);
+
+            DataColumn colChassisNumber = new DataColumn("ChassisNumber", typeof(string));
+            dt.Columns.Add(colChassisNumber);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            try {
+                if (string.IsNullOrWhiteSpace(txtEngine.Text))
+                {
+
+                    errorProvider1.SetError(this.txtEngine, "please Enter Engine Number");
+                    return;
+
+                }
+
+            objVehicle.ChassisNumber = txtChassis.Text;
+            objVehicle.EngineNumber = txtEngine.Text;
+            objVehicle.Make = txtMake.Text;
+            objVehicle.Model = txtModel.Text;
+            int.TryParse(txtmanufacture.Text, out year);
+            txtmanufacture.Text = year.ToString();
+
+            DataRow row = dt.NewRow();
+            row["ChassisNumber"] = txtChassis.Text;
+            row["EngineNumber"] = txtEngine.Text;
+            dt.Rows.Add(row);
+                grdVehicle.DataSource = null;
+                //lstVehicle.Add(objVehicle);
+                grdVehicle.Refresh();
+                grdVehicle.DataSource = dt;
+
+                /* MessageBox.Show("data add in table");
+             txtChassis.Text = string.Empty;
+             txtEngine.Text = string.Empty;*/
+
+
+            }
+
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
+        }
+    }
+}
+
+
+----class file----
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace WinFormsApp2
+{
+   public class Vehicle
+    {
+        public string EngineNumber;
+        public string ChassisNumber;
+        public string Make;
+        public string Model;
+        public int YearOfManufacture = 0;
+    }
+}
