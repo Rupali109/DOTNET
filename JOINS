@@ -1,0 +1,14 @@
+select * from VehicleDetails;
+select * from Vehicle;
+--inner join
+select * from Vehicle A INNER JOIN VehicleDetails B on A.id=B.id;
+select * from Vehicle A INNER JOIN VehicleDetails B on A.id=B.Vehicleid;
+
+--left outer join  data will get apperaed from left able n common from right table
+select * from Vehicle A LEFT JOIN VehicleDetails B on A.id=B.id;
+
+--right outer join ,data will be appeared from right table and common from left table
+select * from Vehicle A RIGHT JOIN VehicleDetails B on A.id=B.Vehicleid;
+
+--full outer join
+select * from Vehicle A FULL OUTER JOIN VehicleDetails B on A.id=B.Vehicleid;
